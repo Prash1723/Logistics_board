@@ -2,4 +2,8 @@
 
 **Aim**: A project to analyse your company logistics with KPIs
 
-**Programming language**: Python 3.9.12
+**Tool**: Python 3.9.12
+
+**Modules**:
+- Rich
+- Numpy
