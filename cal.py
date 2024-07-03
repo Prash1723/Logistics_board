@@ -23,10 +23,18 @@ class kpi:
     def space_left(self):
         """Space left in the godown"""
         return self.s - self.cbm()*self.n
-    
+
+    def assortment(self):
+        question = input("Are there more than one companies in the list?")
+        if question == "yes"
+
     def run(self):
+        x = dict()
         CBM = self.cbm()
         Space = self.space_left()
+        question = input("Are there more than one companies in the list?")
+        if question == "yes":
+            self.company()
         rc.print("Company :", self.company(), style="yellow")
         rc.print("CBM of load: ", CBM, style="green")
         rc.print("Space taken: ", Space, style="red")
