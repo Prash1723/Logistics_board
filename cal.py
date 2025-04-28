@@ -4,7 +4,7 @@ from rich.console import Console
 rc = Console()
 
 class kpi:
-    def __init__(self, l, b, h, n, s, OD, TD, num_acc, total_shipped):
+    def __init__(self, l, b, h, n, s, OD, TD, num_acc, total_shipped, total_transport, num_shipped_units):
         self.l = l                                          #Length
         self.b = b                                          #Breadth
         self.h = h                                          #Height
@@ -14,6 +14,8 @@ class kpi:
         self.TD = TD                                        #Total Deliveries
         self.num_acc = num_acc                              #Number of Accurate orders
         self.total_shipped = total_shipped                  #Total number of shipped orders
+        self.total_transport = total_transport              #Total Transport
+        self.num_shipped_units = num_shipped_units          #Number of Shipped Units
 
     def company(self):
         """Assign company name"""
