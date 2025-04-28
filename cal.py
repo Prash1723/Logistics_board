@@ -4,7 +4,7 @@ from rich.console import Console
 rc = Console()
 
 class kpi:
-    def __init__(self, l, b, h, n, s, OD, TD):
+    def __init__(self, l, b, h, n, s, OD, TD, num_acc, total_shipped):
         self.l = l                                          #Length
         self.b = b                                          #Breadth
         self.h = h                                          #Height
@@ -12,6 +12,8 @@ class kpi:
         self.s = s                                          #Space available
         self.OD = OD                                        #Ontime Deliveries
         self.TD = TD                                        #Total Deliveries
+        self.num_acc = num_acc                              #Number of Accurate orders
+        self.total_shipped = total_shipped                  #Total number of shipped orders
 
     def company(self):
         """Assign company name"""
@@ -27,6 +29,11 @@ class kpi:
         """Calculate Ontime Deliveries"""
         otd = (self.OD/self.TD)*100
         return otd
+
+    def order_accuracy(self):
+        """Calculate order accuracy"""
+        ord_acc = (num_acc/total_shipped)*100
+        return ord_acc
 
     def space_left(self):
         """Space left in the godown"""
@@ -48,4 +55,5 @@ class kpi:
         rc.print("Company :", self.company(), style="yellow")
         rc.print("CBM of load: ", CBM, style="green")
         rc.print("Space taken: ", Space, style="red")
-        rc.print("OTd %; ", OTD, style="orange")
+        rc.print("OTD %; ", OTD, style="orange")
+        rc.print("Order Accuracy %", ord_acc, style="orange")
