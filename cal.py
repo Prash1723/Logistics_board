@@ -35,6 +35,11 @@ class kpi:
         ord_acc = (num_acc/total_shipped)*100
         return ord_acc
 
+    def tcpu(self):
+        """Calculate Transport Cost Per Unit"""
+        tcpu = total_transport / num_shipped_units
+        return tcpu
+
     def space_left(self):
         """Space left in the godown"""
         space_left = self.s - self.cbm()*self.n
@@ -55,5 +60,6 @@ class kpi:
         rc.print("Company :", self.company(), style="yellow")
         rc.print("CBM of load: ", CBM, style="green")
         rc.print("Space taken: ", Space, style="red")
-        rc.print("OTD %; ", OTD, style="orange")
-        rc.print("Order Accuracy %", ord_acc, style="orange")
+        rc.print("OTD %: ", OTD, style="orange")
+        rc.print("Order Accuracy %: ", ord_acc, style="orange")
+        rc.print("Transportation Cost Per Unit : ", tcpu, style="orange")
