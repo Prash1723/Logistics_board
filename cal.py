@@ -4,7 +4,7 @@ from rich.console import Console
 rc = Console()
 
 class kpi:
-    def __init__(self, l, b, h, n, s, OD, TD, num_acc, total_shipped, total_transport, num_shipped_units):
+    def __init__(self, l, b, h, n, s, OD, TD, num_acc, total_shipped, total_transport, num_shipped_units, COGS, avg_inv):
         self.l = l                                          #Length
         self.b = b                                          #Breadth
         self.h = h                                          #Height
@@ -16,6 +16,8 @@ class kpi:
         self.total_shipped = total_shipped                  #Total number of shipped orders
         self.total_transport = total_transport              #Total Transport
         self.num_shipped_units = num_shipped_units          #Number of Shipped Units
+        self.COGS = COGS                                    #Cost of Goods sold
+        self.avg_inv = avg_inv                              #Average inventory
 
     def company(self):
         """Assign company name"""
@@ -42,6 +44,11 @@ class kpi:
         tcpu = total_transport / num_shipped_units
         return tcpu
 
+    def inv_turnover(self):
+        """Calculate Inventory Turnover"""
+        IT = COGS / avg_inv
+        return IT
+
     def space_left(self):
         """Space left in the godown"""
         space_left = self.s - self.cbm()*self.n
@@ -65,3 +72,4 @@ class kpi:
         rc.print("OTD %: ", OTD, style="orange")
         rc.print("Order Accuracy %: ", ord_acc, style="orange")
         rc.print("Transportation Cost Per Unit : ", tcpu, style="orange")
+        rc.print("Inventory Turnover : ", IT, style="orange")
