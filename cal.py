@@ -63,6 +63,9 @@ class kpi:
         CBM = self.cbm()
         Space = self.space_left()
         OTD = self.otd()
+        ord_acc = self.order_accuracy()
+        tcpu = self.tcpu()
+        IT = self.inv_turnover()
         question = input("Are there more than one companies in the list?")
         if question == "yes":
             self.company()
