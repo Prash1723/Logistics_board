@@ -3,7 +3,7 @@ from rich.console import Console
 
 rc = Console()
 
-class kpi:
+class inv_kpi:
     def __init__(self, l, b, h, n, s, OD, TD, num_acc, total_shipped, total_transport, num_shipped_units, COGS, avg_inv):
         self.l = l                                          #Length
         self.b = b                                          #Breadth
@@ -28,11 +28,6 @@ class kpi:
         """Calculate CBM for the items"""
     	cbm = self.l * self.b * self.h
         return cbm
-
-    def otd(self):
-        """Calculate Ontime Deliveries"""
-        otd = (self.OD/self.TD)*100
-        return otd
 
     def order_accuracy(self):
         """Calculate order accuracy"""
@@ -76,3 +71,39 @@ class kpi:
         rc.print("Order Accuracy %: ", ord_acc, style="orange")
         rc.print("Transportation Cost Per Unit : ", tcpu, style="orange")
         rc.print("Inventory Turnover : ", IT, style="orange")
+
+class time_kpi:
+    def __init__(self, TDTO, Deliveries, TOS, TOP, OD, TD):
+        self.TDTO = TDTO                                #Total Delivery time for all orders
+        self.Deliveries = Deliveries                    #Number of Deliveries
+        self.TOS = TOS                                  #Tiime Order Shipped
+        self.TOP = TOP                                  #Time Order Placed
+        self.OD = OD                                    #Number of On-time Deliveries
+        self.TD = TD                                    #Total Deliveries
+
+    def avg_time(self):
+        """Calculate average delivery time"""
+        ADT = self.TDTO / self.Deliveries
+        return ADT
+
+    def OCT(self):
+        """Calculate Warehouse order cycle time"""
+        OCT = self.TOS - self.TOP
+        return OCT
+    
+    def otd(self):
+        """Calculate Ontime Deliveries in percentage"""
+        otd = ( self.OD / self.TD ) * 100
+        return otd
+
+class cost_kpi:
+    def __init__(self, TTC, US):
+        self.TTC = TTC                                  #Total Transport Cost
+        self.US = US                                    #Number of Units Shipped
+
+    def tcpu(self):
+        """Calculate Total Transport Cost per Unit"""
+        tcpu = self.TTC / self.US
+        return tcpu
+
+
