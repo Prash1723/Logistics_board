@@ -4,14 +4,12 @@ from rich.console import Console
 rc = Console()
 
 class inv_kpi:
-    def __init__(self, l, b, h, n, s, OD, TD, num_acc, total_shipped, total_transport, num_shipped_units, COGS, avg_inv):
+    def __init__(self, l, b, h, n, s, num_acc, total_shipped, total_transport, num_shipped_units, COGS, avg_inv):
         self.l = l                                          #Length
         self.b = b                                          #Breadth
         self.h = h                                          #Height
         self.n = n                                          #Number of units
         self.s = s                                          #Space available
-        self.OD = OD                                        #Ontime Deliveries
-        self.TD = TD                                        #Total Deliveries
         self.num_acc = num_acc                              #Number of Accurate orders
         self.total_shipped = total_shipped                  #Total number of shipped orders
         self.total_transport = total_transport              #Total Transport
@@ -64,13 +62,24 @@ class inv_kpi:
         question = input("Are there more than one companies in the list?")
         if question == "yes":
             self.company()
-        rc.print("Company :", self.company(), style="yellow")
-        rc.print("CBM of load: ", CBM, style="green")
-        rc.print("Space taken: ", Space, style="red")
-        rc.print("OTD %: ", OTD, style="orange")
-        rc.print("Order Accuracy %: ", ord_acc, style="orange")
-        rc.print("Transportation Cost Per Unit : ", tcpu, style="orange")
-        rc.print("Inventory Turnover : ", IT, style="orange")
+
+        x = {
+                "Company": self.company(),
+                "CBM of load": CBM,
+                "Space taken": Space,
+                "OTD %": OTD,
+                "Order Accuracy %": ord_acc,
+                "Transportation Cost Per Unit": tcpu,
+                "Inventory Turnover": IT
+                }
+
+        #rc.print("Company :", self.company(), style="yellow")
+        #rc.print("CBM of load: ", CBM, style="green")
+        #rc.print("Space taken: ", Space, style="red")
+        #rc.print("OTD %: ", OTD, style="orange")
+        #rc.print("Order Accuracy %: ", ord_acc, style="orange")
+        #rc.print("Transportation Cost Per Unit : ", tcpu, style="orange")
+        #rc.print("Inventory Turnover : ", IT, style="orange")
 
 class time_kpi:
     def __init__(self, TDTO, Deliveries, TOS, TOP, OD, TD):

@@ -1,6 +1,11 @@
-from cal import kpi
+from cal import inv_kpi
+from rich.console import Console
 
-bot = kpi(10, 12, 4, 40, 50000)
+rc = Console()
+
+bot = inv_kpi(10, 12, 4, 40, 50000)
 
 if __name__ == "__main__":
-    bot.run()
+    x = bot.run()
+    for k, v in x.values():
+        rc.print(k+" :", v, style="yellow")
