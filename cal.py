@@ -106,4 +106,13 @@ class cost_kpi:
         tcpu = self.TTC / self.US
         return tcpu
 
+class quality_kpi:
+    def __init__(self, damaged_items, total_items):
+        self.damaged_items = damaged_items
+        self.total_items = total_items
+
+    def DR(self):
+        """Calculate Damage rate"""
+        DR = ( self.damaged_items / selt.total_items ) * 100
+        return DR
 
